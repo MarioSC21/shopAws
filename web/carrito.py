@@ -29,7 +29,7 @@ class Cart:
                     break
             
         self.save()
-    
+
     def delete(self,producto):
         producto_id = str(producto.id)
         if producto_id in self.cart:
@@ -39,7 +39,7 @@ class Cart:
     def clear(self):
         self.session["cart"] = {}
         self.session["cartMontoTotal"] = "0"
-    
+        
     def save(self):
         montoTotal = 0
         for key,value in self.cart.items():
@@ -47,3 +47,5 @@ class Cart:
         self.session["cartMontoTotal"] = montoTotal
         self.session["cart"] = self.cart
         self.session.modified = True
+
+        

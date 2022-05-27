@@ -33,7 +33,7 @@ def productosPorCategoria(request,categoria_id):
 
 ########### CARRITO DE COMPRAS ##############
 
-from app.carrito import Cart
+from web.carrito import Cart
 
 def carrito(request):
     return render(request,'carrito.html')
@@ -173,9 +173,8 @@ from paypal.standard.forms import PayPalPaymentsForm
 
 def registrarPedido(request):
     if request.user.id is not None:
+        #registra cabecera del pedido
         try:
-            
-            #registra cabecera del pedido
             clientePedido = Cliente.objects.get(usuario=request.user)
             nuevoPedido = Pedido()
             nuevoPedido.cliente = clientePedido
@@ -239,3 +238,6 @@ def pedidopagado(request):
     pedidoEditar.save()
 
     return render(request,'gracias.html')
+
+
+
